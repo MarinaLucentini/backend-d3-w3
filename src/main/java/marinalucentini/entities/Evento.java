@@ -3,6 +3,7 @@ package marinalucentini.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "evento")
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 public class Evento {
     @Id
     @GeneratedValue
-    private long id;
+    private UUID id;
     @Column(name = "title")
     private String titolo;
     @Column(name = "date")

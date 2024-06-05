@@ -7,6 +7,7 @@ import marinalucentini.exception.eventoException;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class CreazioneEvento {
     public static void avvioApplicazione(EntityManagerFactory emf) {
@@ -40,7 +41,8 @@ public class CreazioneEvento {
             }
             case 2: {
                 System.out.println("Dimmi l'id dell'evento da cercare");
-                long id = Long.parseLong(scanner.nextLine());
+                UUID id = UUID.fromString(scanner.nextLine());
+
                 try {
 
                     Evento evento = event.findById(id);
@@ -52,7 +54,8 @@ public class CreazioneEvento {
             }
             case 3: {
                 System.out.println("Dimmi l'id dell'evento da cancellare");
-                long id = Long.parseLong(scanner.nextLine());
+                UUID id = UUID.fromString(scanner.nextLine());
+                
                 try {
 
                     event.findAndRemovedById(id);

@@ -5,6 +5,8 @@ import jakarta.persistence.EntityTransaction;
 import marinalucentini.entities.Evento;
 import marinalucentini.exception.eventoException;
 
+import java.util.UUID;
+
 public class eventoDao {
     private final EntityManager em;
 
@@ -20,13 +22,13 @@ public class eventoDao {
         System.out.println("L'evento" + evento.getTitolo() + "è stato aggiunto con successo");
     }
 
-    public Evento findById(long id) {
+    public Evento findById(UUID id) {
         Evento evento = em.find(Evento.class, id);
         if (evento == null) throw new eventoException(id);
         return evento;
     }
 
-    public void findAndRemovedById(long id) {
+    public void findAndRemovedById(UUID id) {
         Evento found = this.findById(id);
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
