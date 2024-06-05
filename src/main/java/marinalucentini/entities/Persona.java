@@ -29,13 +29,13 @@ public class Persona {
     }
 
 
-    public Persona(String nome, String cognome, String email, LocalDate data_di_nascita, SessoType sessoType, List<Partecipazioni> partecipazioniList) {
+    public Persona(String nome, String cognome, String email, LocalDate data_di_nascita, SessoType sessoType) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.data_di_nascita = data_di_nascita;
         this.sessoType = sessoType;
-        this.partecipazioniList = partecipazioniList;
+      
 
     }
 

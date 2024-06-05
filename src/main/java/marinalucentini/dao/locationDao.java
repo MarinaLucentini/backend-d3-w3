@@ -22,13 +22,13 @@ public class locationDao {
         System.out.println("La location" + location.getNome() + "è stato aggiunto con successo");
     }
 
-    public Location findById(UUID id) {
-        Location location = em.find(Location.class, id);
-        if (location == null) throw new eventoException(id);
+    public Location findById(String id) {
+        Location location = em.find(Location.class, UUID.fromString(id));
+        if (location == null) throw new eventoException(UUID.fromString(id));
         return location;
     }
 
-    public void findAndRemovedById(UUID id) {
+    public void findAndRemovedById(String id) {
         Location found = this.findById(id);
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();

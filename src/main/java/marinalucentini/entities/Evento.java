@@ -25,7 +25,7 @@ public class Evento {
     private tipoEvento tipoEvento;
     @Column(name = "maxusers")
     private int numeroMassimoPartecipanti;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "location_id", unique = true)
     private Location location;
     @OneToMany(mappedBy = "evento")
