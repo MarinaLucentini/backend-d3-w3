@@ -14,7 +14,7 @@ public class Partecipazioni {
     private UUID id;
     @ManyToMany
     @JoinTable(name = "persona_partecipazioni", joinColumns = @JoinColumn(name = "partecipazioni_id"), inverseJoinColumns = @JoinColumn(name = "persona_id"))
-    private List<Persona> personaList;
+    private List<Persona> partecipazioni;
 
     @ManyToOne
     @JoinColumn(name = "evento_id")
@@ -28,17 +28,17 @@ public class Partecipazioni {
     }
 
     public Partecipazioni(List<Persona> persona, Evento evento, StatoType statoType) {
-        this.personaList = persona;
+        this.partecipazioni = persona;
         this.evento = evento;
         this.statoType = statoType;
     }
 
     public List<Persona> getPersonaList() {
-        return personaList;
+        return partecipazioni;
     }
 
     public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
+        this.partecipazioni = personaList;
     }
 
     public UUID getId() {
