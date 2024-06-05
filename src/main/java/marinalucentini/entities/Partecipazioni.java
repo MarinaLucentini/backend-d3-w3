@@ -3,6 +3,7 @@ package marinalucentini.entities;
 import jakarta.persistence.*;
 import marinalucentini.enums.StatoType;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,9 +12,13 @@ public class Partecipazioni {
     @Id
     @GeneratedValue
     private UUID id;
+    @ManyToMany
+    @JoinTable(name = "persona_partecipazioni", joinColumns = @JoinColumn(name = "partecipazioni_id"), inverseJoinColumns = @JoinColumn(name = "persona_id"))
+    private List<Persona> personaList;
 
-    private String persona;
-    private String evento;
+    @ManyToOne
+    @JoinColumn(name = "evento_id")
+    private Evento evento;
     @Enumerated(EnumType.STRING)
     private StatoType statoType;
 
@@ -22,25 +27,29 @@ public class Partecipazioni {
 
     }
 
-    public Partecipazioni(String persona, String evento, StatoType statoType) {
-        this.persona = persona;
+    public Partecipazioni(List<Persona> persona, Evento evento, StatoType statoType) {
+        this.personaList = persona;
         this.evento = evento;
         this.statoType = statoType;
     }
 
-    public String getPersona() {
-        return persona;
+    public List<Persona> getPersonaList() {
+        return personaList;
     }
 
-    public void setPersona(String persona) {
-        this.persona = persona;
+    public void setPersonaList(List<Persona> personaList) {
+        this.personaList = personaList;
     }
 
-    public String getEvento() {
+    public UUID getId() {
+        return id;
+    }
+
+    public Evento getEvento() {
         return evento;
     }
 
-    public void setEvento(String evento) {
+    public void setEvento(Evento evento) {
         this.evento = evento;
     }
 
@@ -56,7 +65,7 @@ public class Partecipazioni {
     public String toString() {
         return "Partecipazioni{" +
                 "id=" + id +
-                ", persona='" + persona + '\'' +
+
                 ", evento='" + evento + '\'' +
                 ", statoType=" + statoType +
                 '}';

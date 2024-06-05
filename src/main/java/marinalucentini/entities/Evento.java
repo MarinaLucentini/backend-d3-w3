@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import marinalucentini.enums.tipoEvento;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,17 +25,25 @@ public class Evento {
     private tipoEvento tipoEvento;
     @Column(name = "maxusers")
     private int numeroMassimoPartecipanti;
+    @OneToOne
+    @JoinColumn(name = "location_id", unique = true)
+    private Location location;
+    @OneToMany(mappedBy = "evento")
+
+    private List<Partecipazioni> partecipazioniList;
 
     public Evento() {
 
     }
 
-    public Evento(String titolo, LocalDate dataevento, String descrizione, marinalucentini.enums.tipoEvento tipoEvento, int numeroMassimoPartecipanti) {
+    public Evento(String titolo, LocalDate dataevento, String descrizione, marinalucentini.enums.tipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, List<Partecipazioni> partecipazioniList) {
         this.titolo = titolo;
         this.dataevento = dataevento;
         this.descrizione = descrizione;
         this.tipoEvento = tipoEvento;
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+        this.location = location;
+        this.partecipazioniList = partecipazioniList;
     }
 
     public String getTitolo() {
