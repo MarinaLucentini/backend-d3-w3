@@ -1,6 +1,7 @@
 package marinalucentini.entities;
 
 import jakarta.persistence.*;
+import marinalucentini.enums.tipoEvento;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -28,7 +29,7 @@ public class Evento {
 
     }
 
-    public Evento(String titolo, LocalDate dataevento, String descrizione, marinalucentini.entities.tipoEvento tipoEvento, int numeroMassimoPartecipanti) {
+    public Evento(String titolo, LocalDate dataevento, String descrizione, marinalucentini.enums.tipoEvento tipoEvento, int numeroMassimoPartecipanti) {
         this.titolo = titolo;
         this.dataevento = dataevento;
         this.descrizione = descrizione;
@@ -60,11 +61,11 @@ public class Evento {
         this.descrizione = descrizione;
     }
 
-    public marinalucentini.entities.tipoEvento getTipoEvento() {
+    public marinalucentini.enums.tipoEvento getTipoEvento() {
         return tipoEvento;
     }
 
-    public void setTipoEvento(marinalucentini.entities.tipoEvento tipoEvento) {
+    public void setTipoEvento(marinalucentini.enums.tipoEvento tipoEvento) {
         this.tipoEvento = tipoEvento;
     }
 

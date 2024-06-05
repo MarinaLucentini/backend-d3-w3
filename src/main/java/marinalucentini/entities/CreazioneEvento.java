@@ -3,6 +3,7 @@ package marinalucentini.entities;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import marinalucentini.dao.eventoDao;
+import marinalucentini.enums.tipoEvento;
 import marinalucentini.exception.eventoException;
 
 import java.time.LocalDate;
@@ -27,11 +28,11 @@ public class CreazioneEvento {
                 String description = scanner.nextLine();
                 System.out.println("Digita 1 se l'evento è pubblico, 2 se l'evento è privato");
                 int type = Integer.parseInt(scanner.nextLine());
-                tipoEvento tipoEvento = marinalucentini.entities.tipoEvento.PUBBLICO;
+                tipoEvento tipoEvento = marinalucentini.enums.tipoEvento.PUBBLICO;
                 if (type == 1) {
-                    tipoEvento = marinalucentini.entities.tipoEvento.PUBBLICO;
+                    tipoEvento = marinalucentini.enums.tipoEvento.PUBBLICO;
                 } else if (type == 2) {
-                    tipoEvento = marinalucentini.entities.tipoEvento.PRIVATO;
+                    tipoEvento = marinalucentini.enums.tipoEvento.PRIVATO;
                 }
                 System.out.println("Numero massimo di partecipanti?");
                 int maxUsers = Integer.parseInt(scanner.nextLine());
@@ -55,7 +56,7 @@ public class CreazioneEvento {
             case 3: {
                 System.out.println("Dimmi l'id dell'evento da cancellare");
                 UUID id = UUID.fromString(scanner.nextLine());
-                
+
                 try {
 
                     event.findAndRemovedById(id);
