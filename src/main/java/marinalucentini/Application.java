@@ -21,13 +21,13 @@ public class Application {
         eventoDao event = new eventoDao(em);
         Location location = new Location("L'isola che non c'è", "Roma");
         locationDao locationD = new locationDao(em);
-        //   locationD.save(location);
-        Location locationfound = locationD.findById("c8f0a309-57d6-40f6-a8b3-5afe089709a1");
+        //locationD.save(location);
+        Location locationfound = locationD.findById("540aa42a-d54e-49f5-ac11-8ebfbc70869a");
         Persona persona1 = new Persona("Aldo", "Baglio", "aldobaglio@gmail.com", LocalDate.of(1982, 9, 15), SessoType.MASCHIO);
         personaDao personaDao1 = new personaDao(em);
-        personaDao1.save(persona1);
+        //  personaDao1.save(persona1);
 
-        //    Evento evento = new Evento("Basta Java", LocalDate.of(2024,9,15), "Bellissima ruota", tipoEvento.PUBBLICO, 50);
+
         System.out.println("Funziona!");
 
     }

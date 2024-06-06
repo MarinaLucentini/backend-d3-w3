@@ -3,7 +3,6 @@ package marinalucentini.entities;
 import jakarta.persistence.*;
 import marinalucentini.enums.StatoType;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -12,9 +11,9 @@ public class Partecipazioni {
     @Id
     @GeneratedValue
     private UUID id;
-    @ManyToMany
-    @JoinTable(name = "persona_partecipazioni", joinColumns = @JoinColumn(name = "partecipazioni_id"), inverseJoinColumns = @JoinColumn(name = "persona_id"))
-    private List<Persona> partecipazioni;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Persona partecipazioni;
 
     @ManyToOne
     @JoinColumn(name = "evento_id")
@@ -27,18 +26,18 @@ public class Partecipazioni {
 
     }
 
-    public Partecipazioni(List<Persona> persona, Evento evento, StatoType statoType) {
+    public Partecipazioni(Persona persona, Evento evento, StatoType statoType) {
         this.partecipazioni = persona;
         this.evento = evento;
         this.statoType = statoType;
     }
 
-    public List<Persona> getPersonaList() {
+    public Persona getPersonaList() {
         return partecipazioni;
     }
 
-    public void setPersonaList(List<Persona> personaList) {
-        this.partecipazioni = personaList;
+    public void setPersonaList(Persona persona) {
+        this.partecipazioni = persona;
     }
 
     public UUID getId() {

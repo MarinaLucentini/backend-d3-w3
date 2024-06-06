@@ -36,14 +36,13 @@ public class Evento {
 
     }
 
-    public Evento(String titolo, LocalDate dataevento, String descrizione, marinalucentini.enums.tipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, List<Partecipazioni> partecipazioniList) {
+    public Evento(String titolo, LocalDate dataevento, String descrizione, marinalucentini.enums.tipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location) {
         this.titolo = titolo;
         this.dataevento = dataevento;
         this.descrizione = descrizione;
         this.tipoEvento = tipoEvento;
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
         this.location = location;
-        this.partecipazioniList = partecipazioniList;
     }
 
     public String getTitolo() {
