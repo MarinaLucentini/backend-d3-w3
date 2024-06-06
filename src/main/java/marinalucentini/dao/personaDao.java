@@ -22,13 +22,13 @@ public class personaDao {
         System.out.println("Il sig./ra" + persona.getNome() + persona.getCognome() + "è stato aggiunto con successo");
     }
 
-    public Persona findById(UUID id) {
-        Persona persona = em.find(Persona.class, id);
-        if (persona == null) throw new eventoException(id);
+    public Persona findById(String id) {
+        Persona persona = em.find(Persona.class, UUID.fromString(id));
+        if (persona == null) throw new eventoException(UUID.fromString(id));
         return persona;
     }
 
-    public void findAndRemovedById(UUID id) {
+    public void findAndRemovedById(String id) {
         Persona found = this.findById(id);
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();

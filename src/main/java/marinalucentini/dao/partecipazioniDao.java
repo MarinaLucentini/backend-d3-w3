@@ -22,13 +22,13 @@ public class partecipazioniDao {
         System.out.println("La partecipazione con id" + partecipazioni.getId() + "è stato aggiunto con successo");
     }
 
-    public Partecipazioni findById(UUID id) {
-        Partecipazioni partecipazioni = em.find(Partecipazioni.class, id);
-        if (partecipazioni == null) throw new eventoException(id);
+    public Partecipazioni findById(String id) {
+        Partecipazioni partecipazioni = em.find(Partecipazioni.class, UUID.fromString(id));
+        if (partecipazioni == null) throw new eventoException(UUID.fromString(id));
         return partecipazioni;
     }
 
-    public void findAndRemovedById(UUID id) {
+    public void findAndRemovedById(String id) {
         Partecipazioni found = this.findById(id);
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();

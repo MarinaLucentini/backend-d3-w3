@@ -22,13 +22,13 @@ public class eventoDao {
         System.out.println("L'evento" + evento.getTitolo() + "è stato aggiunto con successo");
     }
 
-    public Evento findById(UUID id) {
-        Evento evento = em.find(Evento.class, id);
-        if (evento == null) throw new eventoException(id);
+    public Evento findById(String id) {
+        Evento evento = em.find(Evento.class, UUID.fromString(id));
+        if (evento == null) throw new eventoException(UUID.fromString(id));
         return evento;
     }
 
-    public void findAndRemovedById(UUID id) {
+    public void findAndRemovedById(String id) {
         Evento found = this.findById(id);
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
