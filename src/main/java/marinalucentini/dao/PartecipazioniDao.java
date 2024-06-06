@@ -7,10 +7,10 @@ import marinalucentini.exception.eventoException;
 
 import java.util.UUID;
 
-public class partecipazioniDao {
+public class PartecipazioniDao {
     private final EntityManager em;
 
-    public partecipazioniDao(EntityManager em) {
+    public PartecipazioniDao(EntityManager em) {
         this.em = em;
     }
 
